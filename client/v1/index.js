@@ -24,7 +24,6 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * 🌱
  */
 
-
 // 🎯 TODO: The cheapest t-shirt
 // 0. I have 3 favorite brands stored in MY_FAVORITE_BRANDS variable
 // 1. Create a new variable and assign it the link of the cheapest t-shirt
@@ -62,12 +61,20 @@ console.log(brandsName)
 const uniqueBrandsName = new Set(brandsName)
 console.log(uniqueBrandsName.size)
 
-
 // 🎯 TODO: Sort by price
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
+// console.log("Sort by price ##############")
+// var priceComparator = (a,b) => {return parseInt(a.price) - parseInt(b.price)}
+// var rankedByPrice = marketplace.sort(priceComparator);
+// console.log(rankedByPrice)
 
+console.log("Sort by price 2 ##############")
+var rankedByPrice = marketplace.sort((a, b) => {
+  return b.price - a.price;
+});
+console.log(rankedByPrice);
 
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
