@@ -17,8 +17,6 @@ const MY_FAVORITE_BRANDS = [{
 console.table(MY_FAVORITE_BRANDS);
 console.log(MY_FAVORITE_BRANDS[0]);
 
-
-
 /**
  * 🌱
  * Let's go with a very very simple first todo
@@ -26,15 +24,15 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * 🌱
  */
 
+
 // 🎯 TODO: The cheapest t-shirt
 // 0. I have 3 favorite brands stored in MY_FAVORITE_BRANDS variable
 // 1. Create a new variable and assign it the link of the cheapest t-shirt
 // I can find on these e-shops
 // 2. Log the variable
-
-
-
-
+console.log("the cheapest T-Shirt")
+const cheapestTshirt = 'https://adresse.paris/t-shirts-et-polos/4238-t-shirt-ranelagh-1300000262026.html'
+console.log(cheapestTshirt)
 
 /**
  * 👕
@@ -44,20 +42,25 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * The variable is loaded by the file data.js
  * 👕
  */
-// test 
-// hhhhhhhhhhhhhhh
 
-//ffff
 
 // 🎯 TODO: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
-
+console.log("Number of products")
+var numberOfProducts = marketplace.lenght
+console.log(numberOfProducts)
 
 // 🎯 TODO: Brands name
 // 1. Create a variable and assign it the list of brands name only
 // 2. Log the variable
 // 3. Log how many brands we have
+console.log("Brands name")
+var brandsName = []
+marketplace.forEach(obj => brandsName.push(obj.brand))
+console.log(brandsName)
+const uniqueBrandsName = new Set(brandsName)
+console.log(uniqueBrandsName.size)
 
 
 // 🎯 TODO: Sort by price
