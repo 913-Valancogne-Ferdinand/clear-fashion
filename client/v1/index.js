@@ -44,6 +44,10 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * The variable is loaded by the file data.js
  * 👕
  */
+// test 
+// hhhhhhhhhhhhhhh
+
+//ffff
 
 // 🎯 TODO: Number of products
 // 1. Create a variable and assign it the number of products
