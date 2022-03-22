@@ -65,14 +65,14 @@ console.log(uniqueBrandsName.size)
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
-// console.log("Sort by price ##############")
-// var priceComparator = (a,b) => {return parseInt(a.price) - parseInt(b.price)}
-// var rankedByPrice = marketplace.sort(priceComparator);
-// console.log(rankedByPrice)
+console.log("Sort by price ##############")
+var priceComparator = (a,b) => {return parseInt(a.price) - parseInt(b.price)}
+var rankedByPrice = marketplace.sort(priceComparator);
+console.log(rankedByPrice)
 
 console.log("Sort by price 2 ##############")
 var rankedByPrice = marketplace.sort((a, b) => {
-  return b.price - a.price;
+  return a.price - b.price;
 });
 console.log(rankedByPrice);
 
