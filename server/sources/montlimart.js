@@ -11,7 +11,7 @@ const parse = data => {
 
     return $('.category-products .products-grid .item .product-info')
         .map((i, element) => {
-            const name_ = $(element)
+            const name = $(element)
                 .find('.product-name')
                 .find('a')
                 .text()
