@@ -14,16 +14,17 @@ async function sandbox (eshop, site) {
 
     // const products = await montlimart.scrape(eshop);
     const products = await site.scrape(eshop);
+    return products
     // console.log(products);
     // console.log('done');
     // process.exit(0);
   } catch (e) {
     console.error(e);
-    process.exit(1);
+    // process.exit(1);
   }
 }
 
-const [,, eshop] = process.argv;
+// const [,, eshop] = process.argv;
 
 // sandbox(eshop);
 const fs = require("fs");
