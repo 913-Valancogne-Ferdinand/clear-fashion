@@ -53,7 +53,7 @@ function adresseparis_scrap() {
 
 function dedicated_scrap() {
   var listProducts = []
-  var page_link = 'https://www.dedicatedbrand.com/en/men/news'
+  var page_link = 'https://www.dedicatedbrand.com/en/men/all-men'
   products = sandbox(page_link, dedicatedbrand).then(products => {
       for (var product of products) {
           listProducts.push(product)
@@ -64,15 +64,17 @@ function dedicated_scrap() {
 
 function montlimart_scrap() {
   var listProducts = []
-  var page_link = 'https://www.montlimart.com/toute-la-collection.html'
-  products = sandbox(page_link, montlimart).then(products => {
+  for (var i = 1; i < 9; i++) {
+    var page_link = 'https://www.montlimart.com/toute-la-collection.html' + "?p=" + i.toString();
+    products = sandbox(page_link, montlimart).then(products => {
       for (var product of products) {
-          listProducts.push(product)
+        listProducts.push(product)
       }
       writeInJson(listProducts, "./montlimart.json")
-  })
+    })
+  }
 }
 
-montlimart_scrap()
-// dedicated_scrap()
+// montlimart_scrap()
+dedicated_scrap()
 // adresseparis_scrap()
