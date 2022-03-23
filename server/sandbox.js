@@ -25,4 +25,30 @@ async function sandbox (eshop = 'https://www.montlimart.com/toute-la-collection.
 
 const [,, eshop] = process.argv;
 
-sandbox(eshop);
+// sandbox(eshop);
+const fs = require("fs");
+
+function writeInJson(products, path) {
+  productsInfo = JSON.stringify(products);// convert JSON object to string
+  // write JSON string to a file
+  fs.writeFile(path, productsInfo, (err) => {
+      if (err) {
+          throw err;
+      }
+      console.log("JSON data is saved.");
+  });
+}
+
+function adresseParis_scrap() {
+  var listProducts = []
+  var page_link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
+  const adresseparisbrand = require('./sources/adresseparis');
+  products = sandbox(page_link, adresseparisbrand).then(products => {
+      for (var product of products) {
+          listProducts.push(product)
+      }
+      writeInJson(listProducts, "./adresseParis.json")
+  })
+}
+
+adresseParis_scrap()
