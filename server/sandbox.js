@@ -4,7 +4,7 @@ const adresseparis = require('./sources/adresseparis');
 const montlimart = require('./sources/montlimart');
 
 // https://adresse.paris/630-toute-la-collection?id_category=630&n=118
-// 
+// https://www.dedicatedbrand.com/en/men/news
 // https://www.montlimart.com/toute-la-collection.html
 
 
@@ -40,7 +40,7 @@ function writeInJson(products, path) {
   });
 }
 
-function adresseParis_scrap() {
+function adresseparis_scrap() {
   var listProducts = []
   var page_link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
   products = sandbox(page_link, adresseparis).then(products => {
@@ -51,5 +51,16 @@ function adresseParis_scrap() {
   })
 }
 
+function dedicated_scrap() {
+  var listProducts = []
+  var page_link = 'https://www.dedicatedbrand.com/en/men/news'
+  products = sandbox(page_link, dedicatedbrand).then(products => {
+      for (var product of products) {
+          listProducts.push(product)
+      }
+      writeInJson(listProducts, "./dedicatedbrand.json")
+  })
+}
 
-adresseParis_scrap()
+dedicated_scrap()
+// adresseparis_scrap()
