@@ -11,12 +11,13 @@ const parse = data => {
 
     return $('.category-products .products-grid .item .product-info')
         .map((i, element) => {
-            const name = $(element)
+            let namelist = $(element)
                 .find('.product-name')
                 .find('a')
                 .text()
                 .trim()
                 .replace(/\s/g, ' ').split("  ");
+            const name = namelist[0]
             const price = parseInt(
                 $(element)
                     .find('.price')
