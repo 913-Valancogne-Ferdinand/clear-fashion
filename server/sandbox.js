@@ -62,5 +62,17 @@ function dedicated_scrap() {
   })
 }
 
-dedicated_scrap()
+function montlimart_scrap() {
+  var listProducts = []
+  var page_link = 'https://www.montlimart.com/toute-la-collection.html'
+  products = sandbox(page_link, montlimart).then(products => {
+      for (var product of products) {
+          listProducts.push(product)
+      }
+      writeInJson(listProducts, "./montlimart.json")
+  })
+}
+
+montlimart_scrap()
+// dedicated_scrap()
 // adresseparis_scrap()
