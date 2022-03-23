@@ -8,15 +8,15 @@ const montlimart = require('./sources/montlimart');
 // https://www.montlimart.com/toute-la-collection.html
 
 
-async function sandbox (eshop = 'https://www.montlimart.com/toute-la-collection.html') {
+async function sandbox (eshop, site) {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} source`);
 
-    const products = await montlimart.scrape(eshop);
-
-    console.log(products);
-    console.log('done');
-    process.exit(0);
+    // const products = await montlimart.scrape(eshop);
+    const products = await site.scrape(eshop);
+    // console.log(products);
+    // console.log('done');
+    // process.exit(0);
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -42,13 +42,13 @@ function writeInJson(products, path) {
 function adresseParis_scrap() {
   var listProducts = []
   var page_link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
-  const adresseparisbrand = require('./sources/adresseparis');
-  products = sandbox(page_link, adresseparisbrand).then(products => {
+  products = sandbox(page_link, adresseparis).then(products => {
       for (var product of products) {
           listProducts.push(product)
       }
-      writeInJson(listProducts, "./adresseParis.json")
+      writeInJson(listProducts, "./adresseparis.json")
   })
 }
+
 
 adresseParis_scrap()
