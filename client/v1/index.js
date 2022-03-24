@@ -105,10 +105,13 @@ console.table(specific_price_range);
 // 1. Determine the average price of the marketplace
 // 2. Log the average
 var average_price = 0
+var t = 0
 marketplace.forEach((product, i) => {
+  t = t + 1;
+  console.log(product.price)
   average_price = average_price + product.price;
 });
-average_price = average_price / marketplace.lenght;
+average_price = average_price / t;
 console.log("Average price : " + average_price);
 
 
