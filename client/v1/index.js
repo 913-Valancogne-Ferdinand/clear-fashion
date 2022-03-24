@@ -77,6 +77,15 @@ var rankedByPrice = marketplace.sort((a, b) => {
 var products_by_price=marketplace.slice();
 console.table(rankedByPrice);
 
+// or
+function compareByPrice(a,b){
+  if (a.price<b.price)
+    return -1;
+  if (a.price>b.price)
+    return 1;
+  return 0
+  }
+
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
@@ -108,7 +117,6 @@ var average_price = 0
 var t = 0
 marketplace.forEach((product, i) => {
   t = t + 1;
-  console.log(product.price)
   average_price = average_price + product.price;
 });
 average_price = average_price / t;
@@ -139,12 +147,27 @@ console.log("Average price : " + average_price);
 //
 // 2. Log the variable
 // 3. Log the number of products by brands
-
+var brands = new Object();
+marketplace.forEach((product, i) => {
+  if(brands[product.brand]){
+    brands[product.brand].push(product);
+  }
+  else {
+    brands[product.brand]=[product];
+  }
+});
+console.table(brands.adresse);
 
 // 🎯 TODO: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
-
+console.log("Products from each brand sorted by price :")
+// we access the keys of the object brands by calling the function Object.keys(myObject) which returns an array
+Object.keys(brands).forEach((brand, i) => {
+  // to sort, we reuse the function we defined earlier
+  brands[brand].sort(compareByPrice)
+  console.table(brands[brand]);
+});
 
 // 🎯 TODO: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
