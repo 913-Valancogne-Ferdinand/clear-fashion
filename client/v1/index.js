@@ -74,23 +74,42 @@ console.log("Sort by price 2 ##############")
 var rankedByPrice = marketplace.sort((a, b) => {
   return a.price - b.price;
 });
-console.log(rankedByPrice);
+var products_by_price=marketplace.slice();
+console.table(rankedByPrice);
 
 // 🎯 TODO: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
+console.log("Sort by date ##############")
+function compareByDate(a,b){
+  if (new Date(a.date)>new Date(b.date))
+    return -1;
+  if (new Date(a.date)<new Date(b.date))
+    return 1;
+  return 0
+  }
 
+var products_by_date=marketplace.slice();
+products_by_date.sort(compareByDate)
+console.table(products_by_date);
 
 // 🎯 TODO: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
-
+console.log("Filter a specific price range ##############")
+const specific_price_range=marketplace.filter(product => (product.price>50 && product.price<100));
+console.table(specific_price_range);
 
 // 🎯 TODO: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
-
+var average_price = 0
+marketplace.forEach((product, i) => {
+  average_price = average_price + product.price;
+});
+average_price = average_price / marketplace.lenght;
+console.log("Average price : " + average_price);
 
 
 
