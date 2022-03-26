@@ -52,6 +52,7 @@ app.get('/products/search', async (req, res) => {
     } query = { "price": { $lte: price } }; //else query wthout brand
 
     // making the query and sending it to the database
+    console.log("getting product from database...")
     const products = await mydb.find(query, size, page);
     // sending back the products
     if (products) {
@@ -65,6 +66,8 @@ app.get('/products/search', async (req, res) => {
 
 });
 
+
+/*
 //endpoint to get a simple product by its id
 app.get('/product/:id', async (req, res) => {
   try {
@@ -79,9 +82,7 @@ app.get('/product/:id', async (req, res) => {
     console.log("Error sending the repsonse to the server", err);
     res.send({ ack: "No product found" });
   }
-});
-
-
+}); */
 
 
 app.listen(PORT);
