@@ -56,8 +56,9 @@ app.get('/products/search', async (req, res) => {
     const products = await mydb.find(query, size, page);
     // sending back the products
     if (products) {
+      const count = await mydb.getCount();
       // sending results with the right headers
-      res.send({ "success": true, "data": { "result": products} });
+      res.send({ "success": true, "data": { "result": products, "meta": { "currentPage": page, "pageCount": Math.round(count / size), "pageSize": size, "count": count } } });
     }
   } catch (err) {
     console.log("Error sending the repsonse to the server", err);

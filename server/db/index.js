@@ -75,6 +75,18 @@ module.exports.find = async (query, size = 12, page = 1) => {
   }
 };
 
+module.exports.getCount = async () => {
+  try {
+    const db = await getDB();
+    const collection = db.collection(MONGODB_COLLECTION);
+    const result = await collection.count();
+    return result;
+  } catch (error) {
+    console.log("Error when getting the count of documents in the database : ", error)
+    return null
+  }
+}
+
 /**
  * Close the connection
  */
