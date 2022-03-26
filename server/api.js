@@ -1,26 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
-const MongoCluster = require('./db/index')
-
-const { MongoClient } = require('mongodb');
-const MONGODB_URI = 'mongodb+srv://FerdinandValancogne:ferdinand@cluster0.upmid.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-const MONGODB_DB_NAME = 'clearfashion';
-
-async function connect() {
-  try {
-      const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-      let connexion_db=client.db(MONGODB_DB_NAME)
-      console.log('Connected to database ')
-      return connexion_db
-  }
-  catch (err) {
-      console.error(`Error connecting to the database. \n${err}`);
-  }
-}
-
-const mydb = connect();
-
+const mydb = require('./db');
 
 const PORT = 8092;
 
@@ -74,10 +55,8 @@ app.get('/products/search', async (req, res) => {
     const products = await mydb.find(query, size, page);
     // sending back the products
     if (products) {
-      // getting total length of the database
-      const count = await mydb.getCount();
       // sending results with the right headers
-      res.send({ "success": true, "data": { "result": products, "meta": { "currentPage": page, "pageCount": Math.round(count / size), "pageSize": size, "count": count } } });
+      res.send({ "success": true, "data": { "result": products} });
     }
   } catch (err) {
     console.log("Error sending the repsonse to the server", err);
