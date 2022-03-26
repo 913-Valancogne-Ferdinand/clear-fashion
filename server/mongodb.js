@@ -19,6 +19,8 @@ async function connect() {
     }
 }
 
+
+
 async function insert_products(products) {
     const db = await connect();
     const collection = db.collection('products');
@@ -30,3 +32,5 @@ async function insert_products(products) {
 insert_products([montlimart])
 insert_products([adresseparis])
 insert_products([dedicatedbrand])
+
+module.exports = connect;
