@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 const fs = require('fs');
 
 const MONGODB_DB_NAME = 'clearfashion';
@@ -20,7 +20,7 @@ const getDB = module.exports.getDB = async () => {
       return database;
     }
 
-    client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
+    client = await MongoClient.connect(MONGODB_URI, { 'useNewUrlParser': true });
     database = client.db(MONGODB_DB_NAME);
 
     console.log('💽  Connected');
@@ -29,7 +29,7 @@ const getDB = module.exports.getDB = async () => {
   } catch (error) {
     console.error('🚨 MongoClient.connect...', error);
     return null;
-  }
+  } find
 };
 
 /**
@@ -43,7 +43,7 @@ module.exports.insert = async products => {
     const collection = db.collection(MONGODB_COLLECTION);
     // More details
     // https://docs.mongodb.com/manual/reference/method/db.collection.insertMany/#insert-several-document-specifying-an-id-field
-    const result = await collection.insertMany(products, {'ordered': false});
+    const result = await collection.insertMany(products, { 'ordered': false });
 
     return result;
   } catch (error) {
@@ -60,12 +60,13 @@ module.exports.insert = async products => {
  * @param  {Array}  query
  * @return {Array}
  */
-module.exports.find = async query => {
+module.exports.find = async (query, size = 12, page = 1) => {
   try {
     const db = await getDB();
     const collection = db.collection(MONGODB_COLLECTION);
     console.log("finding...")
-    const result = await collection.find(query).toArray();
+    const result = await collection.find(query).skip(page > 0 ? ((page - 1) * size) : 0).limit(size).toArray();
+
 
     return result;
   } catch (error) {
