@@ -9,13 +9,13 @@ const adresseparis = require('./adresseparis.json');
 
 async function connect() {
     try {
-        const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-        let connexion_db=client.db(MONGODB_DB_NAME)
-        console.log('Connected to database ')
-        return connexion_db
+        const client = MongoClient.connect(MONGODB_URI, {useNewUrlParser: true});
+        const db = client.db(MONGODB_DB_NAME)
+        console.log('Connected')
+        return db
     }
     catch (err) {
-        console.error(`Error connecting to the database. \n${err}`);
+        console.error(`Error . \n${err}`);
     }
 }
 
