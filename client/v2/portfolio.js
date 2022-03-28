@@ -11,6 +11,7 @@ const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 const selectSort = document.querySelector('#sort-select');
+const selectReasonable = document.querySelector('#reasonable-price');
 
 /**
  * Set global value
