@@ -8,7 +8,6 @@ const cheerio = require('cheerio');
  */
 const parse = data => {
     const $ = cheerio.load(data);
-    const released = new Date();
 
     return $('.product_list .ajax_block_product')
         .map((i, element) => {
@@ -17,19 +16,16 @@ const parse = data => {
                 .text()
                 .trim()
                 .replace(/\s/g, ' ').split('  ')[0];
-
             const price = parseInt(
                 $(element)
                     .find('.price')
                     .text()
             );
-            const brand = "Adresse_Paris";
+            const brand = "AdresseParis";
             var link = $(element)
                 .find('.product-name').attr('href');
 
-            const date = released.toLocaleDateString()
-
-            return {brand, name, price, date};
+            return {brand, name, price, link};
         })
         .get();
 };

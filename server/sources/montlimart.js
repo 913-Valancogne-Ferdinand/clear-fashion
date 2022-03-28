@@ -25,7 +25,6 @@ const parse = data => {
             );
             const brand = "montlimart"
             var link = $(element)
-                //.find('.product-name').attr('a href');
                 .find('a').attr('href');
             return {brand, name, price, link };
         })
