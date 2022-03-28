@@ -75,6 +75,6 @@ function montlimart_scrap() {
   }
 }
 
-// montlimart_scrap()
+montlimart_scrap()
 dedicated_scrap()
-// adresseparis_scrap()
+adresseparis_scrap()
