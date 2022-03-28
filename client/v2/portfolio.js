@@ -137,6 +137,17 @@ function sort(typeOfSort, products) {
     };
   };
 
+
+function reasonable(typeOfReasonable, products){
+  let res=[];
+  products.forEach((product, i) => {
+    if(product.price<=typeOfReasonable){
+      res.push(product);
+    }
+  });
+  return res;
+};
+
 /**
  * Select the number of products to display
  */
@@ -158,6 +169,12 @@ selectSort.addEventListener('change', event =>{
   fetchProducts(currentPagination.currentPage, parseInt(selectShow.value))
     .then(setCurrentProducts)
     .then(() => render(sort(event.target.value, currentProducts), currentPagination))
+});
+
+selectReasonable.addEventListener('change', event =>{
+  fetchProducts(currentPagination.currentPage, parseInt(selectShow.value))
+    .then(setCurrentProducts)
+    .then(() => render(reasonable(event.target.value, currentProducts), currentPagination))
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
