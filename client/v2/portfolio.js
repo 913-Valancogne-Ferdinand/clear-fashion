@@ -10,6 +10,7 @@ const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const selectSort = document.querySelector('#sort-select');
 
 /**
  * Set global value
@@ -106,6 +107,35 @@ const render = (products, pagination) => {
  * Declaration of all Listeners
  */
 
+// sort
+function price_asc(a,b){
+  if (a.price<b.price){
+    return -1;}
+  if (a.price>b.price){
+    return 1;}
+  return 0
+  };
+
+function price_desc(a,b){
+  if (a.price<b.price){
+    return 1;}
+  if (a.price>b.price){
+    return -1;}
+  return 0
+  };
+
+
+function sort(typeOfSort, products) {
+  if(typeOfSort=='price-asc'){
+    products=products.sort(price_asc);
+    return products;
+    }
+  else if (typeOfSort=='price-desc'){
+    products=products.sort(price_desc);
+    return products;
+    };
+  };
+
 /**
  * Select the number of products to display
  */
@@ -114,6 +144,19 @@ selectShow.addEventListener('change', async (event) => {
 
   setCurrentProducts(products);
   render(currentProducts, currentPagination);
+});
+
+selectPage.addEventListener('change', event => {
+  fetchProducts(parseInt(event.target.value), parseInt(selectShow.value))
+    .then(setCurrentProducts)
+    .then(() => render(currentProducts, currentPagination));
+   
+});
+
+selectSort.addEventListener('change', event =>{
+  fetchProducts(currentPagination.currentPage, parseInt(selectShow.value))
+    .then(setCurrentProducts)
+    .then(() => render(sort(event.target.value, currentProducts), currentPagination))
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
