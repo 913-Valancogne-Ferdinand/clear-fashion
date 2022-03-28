@@ -12,31 +12,23 @@ async function sandbox (eshop, site) {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} source`);
 
-    // const products = await montlimart.scrape(eshop);
     const products = await site.scrape(eshop);
-    return products
-    // console.log(products);
-    // console.log('done');
-    // process.exit(0);
+    return products;
+    // process.exit(0)
   } catch (e) {
     console.error(e);
     // process.exit(1);
   }
 }
 
-// const [,, eshop] = process.argv;
-
-// sandbox(eshop);
 const fs = require("fs");
 
-function writeInJson(products, path) {
-  productsInfo = JSON.stringify(products);// convert JSON object to string
-  // write JSON string to a file
-  fs.writeFile(path, productsInfo, (err) => {
+function writeInJson(product, path) {
+  productI = JSON.stringify(product);
+  fs.writeFile(path, productI, (err) => {
       if (err) {
           throw err;
       }
-      console.log("JSON data is saved.");
   });
 }
 
