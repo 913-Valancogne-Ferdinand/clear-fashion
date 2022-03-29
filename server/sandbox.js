@@ -33,7 +33,7 @@ function writeInJson(products, path) {
   });
 }
 
-function adresseparis_scrap() {
+function scrapingadresseparis() {
   var listProducts = []
   var page_link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
   products = sandbox(page_link, adresseparis).then(products => {
@@ -47,7 +47,7 @@ function adresseparis_scrap() {
 
 
 
-function dedicated_scrap() {
+function scrapingdedicated() {
   var listProducts = []
   var page_link = 'https://www.dedicatedbrand.com/en/men/all-men'
   products = sandbox(page_link, dedicatedbrand).then(products => {
@@ -65,7 +65,7 @@ function dedicated_scrap() {
   })
 }
 
-function montlimart_scrap() {
+function scrapingmontlimart() {
   var listProducts = []
   for (var i = 1; i < 9; i++) {
     var page_link = 'https://www.montlimart.com/toute-la-collection.html' + "?p=" + i.toString();
@@ -78,6 +78,6 @@ function montlimart_scrap() {
   }
 }
 
-// montlimart_scrap()
-dedicated_scrap()
-// adresseparis_scrap()
+// scrapingmontlimart()
+scrapingdedicated()
+// scrapingadresseparis()

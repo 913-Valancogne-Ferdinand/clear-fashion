@@ -12,6 +12,10 @@ const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
 const selectSort = document.querySelector('#sort-select');
 const selectReasonable = document.querySelector('#reasonable-price');
+const span50 = document.querySelector('#p50');
+const span90 = document.querySelector('#p90');
+const span95 = document.querySelector('#p95');
+
 
 /**
  * Set global value
@@ -94,21 +98,48 @@ const renderPagination = pagination => {
  */
 const renderIndicators = pagination => {
   const {count} = pagination;
-
   spanNbProducts.innerHTML = count;
 };
+
+const renderIndicatorsp = products => {
+  span50.innerHTML = p50(products);
+  span90.innerHTML = p90(products);
+  span95.innerHTML = p95(products);
+}
 
 const render = (products, pagination) => {
   renderProducts(products);
   renderPagination(pagination);
   renderIndicators(pagination);
+  renderIndicatorsp(products);
 };
 
 /**
  * Declaration of all Listeners
  */
 
-// sort
+// p50
+function p50(products) {
+  products.sort(price_asc);
+  let index=Math.trunc(products.length/100*50);
+  return products[index].price;
+};
+
+// p90
+function p90(products) {
+  products.sort(price_asc);
+  let index=Math.trunc(products.length/100*90);
+  return products[index].price;
+};
+
+// p95
+function p95(products) {
+  products.sort(price_asc);
+  let index=Math.trunc(products.length/100*95);
+  return products[index].price;
+};
+
+// sort products
 function price_asc(a,b){
   if (a.price<b.price){
     return -1;}
@@ -137,7 +168,7 @@ function sort(typeOfSort, products) {
     };
   };
 
-
+// select reasonable price
 function reasonable(typeOfReasonable, products){
   let res=[];
   products.forEach((product, i) => {
@@ -147,6 +178,8 @@ function reasonable(typeOfReasonable, products){
   });
   return res;
 };
+
+
 
 /**
  * Select the number of products to display
