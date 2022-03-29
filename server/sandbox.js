@@ -23,61 +23,63 @@ async function sandbox (eshop, site) {
 
 const fs = require("fs");
 
-function writeInJson(products, path) {
-  productInfo = JSON.stringify(products);
-  fs.writeFile(path, productInfo, (err) => {
+
+function scrapingadresseparis() {
+  var listOfProducts = []
+  var link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
+  products = sandbox(link, adresseparis).then(products => {
+      for (var i of products) {
+          listOfProducts.push(i)
+      }
+      fs.writeFile("./adresseparis.json", listOfProducts, (err) => {
       if (err) {
           throw err;
       }
-      console.log("Json good");
+    });
   });
-}
-
-function scrapingadresseparis() {
-  var listProducts = []
-  var page_link = 'https://adresse.paris/630-toute-la-collection?id_category=630&n=118'
-  products = sandbox(page_link, adresseparis).then(products => {
-      for (var product of products) {
-          listProducts.push(product)
-      }
-      writeInJson(listProducts, "./adresseparis.json")
-  })
-}
+};
 
 
 
 
 function scrapingdedicated() {
-  var listProducts = []
-  var page_link = 'https://www.dedicatedbrand.com/en/men/all-men'
-  products = sandbox(page_link, dedicatedbrand).then(products => {
-      for (var product of products) {
-          listProducts.push(product)
+  var listOfProducts = []
+  var link = 'https://www.dedicatedbrand.com/en/men/all-men'
+  products = sandbox(link, dedicatedbrand).then(products => {
+      for (var i of products) {
+          listOfProducts.push(i)
       }
-      writeInJson(listProducts, "./dedicatedbrand.json")
   })
-  var page_link = 'https://www.dedicatedbrand.com/en/women/all-women'
-  products = sandbox(page_link, dedicatedbrand).then(products => {
-      for (var product of products) {
-          listProducts.push(product)
+  var link = 'https://www.dedicatedbrand.com/en/women/all-women'
+  products = sandbox(link, dedicatedbrand).then(products => {
+      for (var i of products) {
+          listOfProducts.push(i)
       }
-      writeInJson(listProducts, "./dedicatedbrand.json")
+      fs.writeFile("./dedicatedbrand.json", listOfProducts, (err) => {
+        if (err) {
+            throw err;
+        }
+    })
   })
 }
 
 function scrapingmontlimart() {
-  var listProducts = []
+  var listOfProducts = []
   for (var i = 1; i < 9; i++) {
-    var page_link = 'https://www.montlimart.com/toute-la-collection.html' + "?p=" + i.toString();
-    products = sandbox(page_link, montlimart).then(products => {
-      for (var product of products) {
-        listProducts.push(product)
+    var link = 'https://www.montlimart.com/toute-la-collection.html' + "?p=" + i.toString();
+    products = sandbox(link, montlimart).then(products => {
+      for (var i of products) {
+        listOfProducts.push(i)
       }
-      writeInJson(listProducts, "./montlimart.json")
+      fs.writeFile("./montlimart.json", listOfProducts, (err) => {
+        if (err) {
+            throw err;
+        }
+      })
     })
   }
 }
 
 // scrapingmontlimart()
-scrapingdedicated()
+// scrapingdedicated()
 // scrapingadresseparis()
