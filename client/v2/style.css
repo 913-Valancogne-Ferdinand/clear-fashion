@@ -1,5 +1,5 @@
 html {
-    background-color: #f5f0a7;
+    background-color: #fceb05;
 }
 
 header {
@@ -12,3 +12,11 @@ header {
     text-align: center;
     color: #ff0000;
 }
+
+body {
+    color: #000000;
+    background: linear-gradient(#f18a22, #ffffff);
+    margin: 50px;
+  }
+
+
