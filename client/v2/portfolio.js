@@ -61,7 +61,7 @@ const renderProducts = products => {
       <div class="product" id=${product.uuid}>
         <span>${product.brand}</span>
         <a href="${product.link}">${product.name}</a>
-        <span>${product.price}</span>
+        <span>${product.price} €</span>
       </div>
     `;
     })

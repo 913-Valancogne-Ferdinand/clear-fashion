@@ -23,12 +23,13 @@ async function sandbox (eshop, site) {
 
 const fs = require("fs");
 
-function writeInJson(product, path) {
-  productI = JSON.stringify(product);
-  fs.writeFile(path, productI, (err) => {
+function writeInJson(products, path) {
+  productInfo = JSON.stringify(products);
+  fs.writeFile(path, productInfo, (err) => {
       if (err) {
           throw err;
       }
+      console.log("Json good");
   });
 }
 
@@ -43,9 +44,19 @@ function adresseparis_scrap() {
   })
 }
 
+
+
+
 function dedicated_scrap() {
   var listProducts = []
   var page_link = 'https://www.dedicatedbrand.com/en/men/all-men'
+  products = sandbox(page_link, dedicatedbrand).then(products => {
+      for (var product of products) {
+          listProducts.push(product)
+      }
+      writeInJson(listProducts, "./dedicatedbrand.json")
+  })
+  var page_link = 'https://www.dedicatedbrand.com/en/women/all-women'
   products = sandbox(page_link, dedicatedbrand).then(products => {
       for (var product of products) {
           listProducts.push(product)
@@ -67,6 +78,6 @@ function montlimart_scrap() {
   }
 }
 
-montlimart_scrap()
+// montlimart_scrap()
 dedicated_scrap()
-adresseparis_scrap()
+// adresseparis_scrap()

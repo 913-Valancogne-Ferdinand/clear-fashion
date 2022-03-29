@@ -1,0 +1,14 @@
+html {
+    background-color: #f5f0a7;
+}
+
+header {
+    background-image: url("fond.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 5.2;
+    padding: 6vw 5em;
+    text-align: center;
+    color: #ff0000;
+}

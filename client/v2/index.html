@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel='stylesheet' href='style.css' />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
   </head>
   <body>
-    <h1>Clear fashion</h1>
+    <header id="header">
+      <h1>Clear Fashion </h1>
+    </header>
+    <h1>Filters : </h1>
     <section id="options">
       <div id="show">
         <label for="show-select">Show:</label>
@@ -23,7 +27,13 @@
         <div id= "By reasonable price">
           <label for="reasonable-price">By reasonable price:</label>
           <select name="By reasonable price" id="reasonable-price">
+            <option value="100000"> </option>
             <option value="40">less 40</option>
+            <option value="50">less 50</option>
+            <option value="60">less 60</option>
+            <option value="70">less 70</option>
+            <option value="80">less 80</option>
+            <option value="90">less 90</option>
             <option value="100">less 100</option>
           </select>
         </div>
@@ -37,8 +47,6 @@
         <select name="sort" id="sort-select">
           <option value="price-asc">Cheaper</option>
           <option value="price-desc">Expensive</option>
-          <option value="date-asc">Recently released</option>
-          <option value="date-desc">Anciently released</option>
         </select>
       </div>
     </section>
@@ -54,15 +62,15 @@
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50">0</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90">0</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95">0</span>
       </div>
       <div>
         <span>Last released date</span>

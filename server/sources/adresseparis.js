@@ -21,7 +21,7 @@ const parse = data => {
                     .find('.price')
                     .text()
             );
-            const brand = "AdresseParis";
+            const brand = "adresseparis";
             var link = $(element)
                 .find('.product-name').attr('href');
 
