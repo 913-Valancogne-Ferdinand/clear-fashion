@@ -9,28 +9,44 @@ const adresseparis = require('./adresseparis.json');
 
 async function connect() {
     try {
-        const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-        let connexion_db=client.db(MONGODB_DB_NAME)
-        console.log('Connected to database ')
-        return connexion_db
+        const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true});
+        let db = client.db(MONGODB_DB_NAME)
+        console.log('Connected')
+        return db
     }
     catch (err) {
-        console.error(`Error connecting to the database. \n${err}`);
+        console.error(error);
     }
 }
 
 
 
-async function insert_products(products) {
-    const db = await connect();
-    const collection = db.collection('products');
-    for (brand_products of products) {
-        const result = collection.insertMany(brand_products);
+async function insert(products) {
+    const mongodb = await connect();
+    const collection = mongodb.collection('products');
+    for (i of products) {
+        const result = collection.insertMany(i);
     }
 }
 
-insert_products([montlimart])
-insert_products([adresseparis])
-insert_products([dedicatedbrand])
+/*
+// find a product ??
+async function find(products, query) {
+    const mongodb = await connect();
+    const finding = mongodb.find(query);
+    return finding;
+}
+
+var query1 = {brand = 'adresseparis'};
+var query2 = {price = 55};
+find(products, query1)
+
+*/
+
+
+
+insert([montlimart])
+insert([adresseparis])
+insert([dedicatedbrand])
 
 module.exports = connect;
