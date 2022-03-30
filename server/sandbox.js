@@ -31,7 +31,8 @@ function scrapingadresseparis() {
       for (var i of products) {
           listOfProducts.push(i)
       }
-      fs.writeFile("./adresseparis.json", listOfProducts, (err) => {
+      productsJson = JSON.stringify(listOfProducts);
+      fs.writeFile("./adresseparis.json", productsJson, (err) => {
       if (err) {
           throw err;
       }
@@ -55,7 +56,8 @@ function scrapingdedicated() {
       for (var i of products) {
           listOfProducts.push(i)
       }
-      fs.writeFile("./dedicatedbrand.json", listOfProducts, (err) => {
+      productsJson = JSON.stringify(listOfProducts);
+      fs.writeFile("./dedicatedbrand.json", productsJson, (err) => {
         if (err) {
             throw err;
         }
@@ -71,7 +73,8 @@ function scrapingmontlimart() {
       for (var i of products) {
         listOfProducts.push(i)
       }
-      fs.writeFile("./montlimart.json", listOfProducts, (err) => {
+      productsJson = JSON.stringify(listOfProducts);
+      fs.writeFile("./montlimart.json", productsJson, (err) => {
         if (err) {
             throw err;
         }
