@@ -73,7 +73,7 @@ const renderProducts = products => {
 
   div.innerHTML = template;
   fragment.appendChild(div);
-  sectionProducts.innerHTML = '<h2>Products</h2>';
+  sectionProducts.innerHTML = '<h2>Products :</h2>';
   sectionProducts.appendChild(fragment);
 };
 

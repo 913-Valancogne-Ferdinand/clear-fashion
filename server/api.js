@@ -54,7 +54,6 @@ app.get('/products/search', async (req, res) => {
     console.log("Error sending the repsonse to the server", err);
     res.send({ ack: "No product found" });
   }
-
 });
 
 
