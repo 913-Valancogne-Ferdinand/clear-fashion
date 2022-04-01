@@ -1,5 +1,5 @@
 html {
-    background-color: #fceb05;
+    background-color: #ffffff;
 }
 
 header {
@@ -15,10 +15,10 @@ header {
 
 body {
     color: #000000;
-    background: linear-gradient(#f18a22, #ffffff);
+    background: linear-gradient(#ffffff, #f8c97c);
     font-family: sans-serif;
     margin: 20px;
-  }
+}
 
 .product {
     text-align: center;
